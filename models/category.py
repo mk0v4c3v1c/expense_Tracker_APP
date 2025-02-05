@@ -1,5 +1,5 @@
 class Category:
-    VALID_CATEGORIES = {"Hrana", "Računi", "Prevoz", "Zabava", "Ostalo"}
+    VALID_CATEGORIES = {"Food", "Bills", "Transportation", "Fun", "Other"}
 
     #Checking is there valid category
     @staticmethod

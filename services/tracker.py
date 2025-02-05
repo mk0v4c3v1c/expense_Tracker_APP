@@ -9,12 +9,12 @@ class ExpenseTracker:
     #Add new transaction if it's valid
     def add_transaction(self, amount: float, category: str, description: str = ""):
         if not Category.is_valid(category):
-            raise ValueError("Nevažeća kategorija!")
+            raise ValueError("Not a valid category!")
 
         transaction = Transaction(amount, category, description=description)
         self.transactions.append(transaction)
         DataHandler.save_transactions(self.transactions)
-        print(f"Dodata transakcija: {transaction.to_dict()}")
+        print(f"Added Transaction: {transaction.to_dict()}")
 
     #Show all transactions
     def list_transactions(self):
