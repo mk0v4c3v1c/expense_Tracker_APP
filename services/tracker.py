@@ -1,6 +1,7 @@
 from models.transaction import Transaction
 from services.data_handler import DataHandler
 from models.category import Category
+from datetime import datetime
 
 class ExpenseTracker:
     def __init__(self):
@@ -34,4 +35,21 @@ class ExpenseTracker:
 
     def calculate_balance(self):
         return sum(t.amount for t in self.transactions)
+
+    #Filter transaction per category or date
+    def filter_transactions(self, category: str = None, date: str = None):
+        filtered = self.transactions
+
+        if category:
+            filtered = [t for t in filtered if t.category.lower() == category.lower()]
+
+        if date:
+            filtered = [t for t in filtered if t.date == date]
+
+        if not filtered:
+            print("There are no transactions recorded yet.")
+            return
+
+        for t in filtered:
+            print(f"{t.date} | {t.category} | {t.amount} RSD | {t.description}")
 
