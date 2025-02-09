@@ -4,7 +4,7 @@ def main():
     tracker = ExpenseTracker()
 
     while True:
-        print("\n1. Add transaction\n2. Show transactions\n3. Show bilance\n4. Delete transaction\n5. Exit")
+        print("\n1. Add transaction\n2. Show transactions\n3. Show bilance\n4. Delete transaction\n5. Filtering transactions\n6. Exit")
         choice = input("Choose an option: ")
 
         if choice == "1":
@@ -21,6 +21,10 @@ def main():
             index = int(input("Enter the transaction index for deletion : "))
             tracker.delete_transaction(index)
         elif choice == "5":
+            category = input("Enter the category (or press the Enter to skip): ").strip()
+            date = input("Enter the date (YYYY-MM-DD, or press the Enter to skip): ").strip()
+            tracker.filter_transactions(category or None, date or None)
+        elif choice == "6":
             break
         else:
             print("Unknown choice!")
