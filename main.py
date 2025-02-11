@@ -15,7 +15,7 @@ def main():
         elif choice == "2":
             tracker.list_transactions()
         elif choice == "3":
-            print(f"Trenutni bilans: {tracker.calculate_balance()} RSD")
+            print(f"Current bilance: {tracker.calculate_balance()} EUR")
         elif choice == "4":
             tracker.list_transactions()
             index = int(input("Enter the transaction index for deletion : "))
