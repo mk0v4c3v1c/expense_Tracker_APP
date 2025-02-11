@@ -4,7 +4,7 @@ def main():
     tracker = ExpenseTracker()
 
     while True:
-        print("\n1. Add transaction\n2. Show transactions\n3. Show bilance\n4. Delete transaction\n5. Filtering transactions\n6. Exit")
+        print("\n1. Add transaction\n2. Show transactions\n3. Show bilance\n4. Delete transaction\n5. Filtering transactions\n6. Export into CSV\n7. Show statistics\n8. Exit")
         choice = input("Choose an option: ")
 
         if choice == "1":
@@ -25,6 +25,8 @@ def main():
             date = input("Enter the date (YYYY-MM-DD, or press the Enter to skip): ").strip()
             tracker.filter_transactions(category or None, date or None)
         elif choice == "6":
+            filename = input("Enter the filename (or press the Enter to skip): ").strip() or "transactions.csv"
+            tracker.export_transactions(filename)
             break
         else:
             print("Unknown choice!")
