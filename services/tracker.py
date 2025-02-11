@@ -2,6 +2,8 @@ from models.transaction import Transaction
 from services.data_handler import DataHandler
 from models.category import Category
 from datetime import datetime
+from utils.csv_handler import CSVHandler
+
 
 class ExpenseTracker:
     def __init__(self):
@@ -53,3 +55,6 @@ class ExpenseTracker:
         for t in filtered:
             print(f"{t.date} | {t.category} | {t.amount} RSD | {t.description}")
 
+    # Export transaction into CSV file
+    def export_transactions(self, filename="transactions.csv"):
+        CSVHandler.export_to_csv(self.transactions, filename)
