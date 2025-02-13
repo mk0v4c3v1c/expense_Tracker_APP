@@ -3,6 +3,8 @@ from services.data_handler import DataHandler
 from models.category import Category
 from datetime import datetime
 from utils.csv_handler import CSVHandler
+from utils.chart import Chart
+
 
 
 class ExpenseTracker:
@@ -58,3 +60,7 @@ class ExpenseTracker:
     # Export transaction into CSV file
     def export_transactions(self, filename="transactions.csv"):
         CSVHandler.export_to_csv(self.transactions, filename)
+
+    # Show pie chart expenses per categories
+    def show_expense_chart(self):
+        Chart.generate_pie_chart(self.transactions)
