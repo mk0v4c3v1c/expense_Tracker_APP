@@ -27,6 +27,8 @@ def main():
         elif choice == "6":
             filename = input("Enter the filename (or press the Enter to skip): ").strip() or "transactions.csv"
             tracker.export_transactions(filename)
+        if choice == "7":
+            tracker.show_expense_chart()
             break
         else:
             print("Unknown choice!")
