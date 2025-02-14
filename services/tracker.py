@@ -4,6 +4,7 @@ from models.category import Category
 from datetime import datetime
 from utils.csv_handler import CSVHandler
 from utils.chart import Chart
+from utils.monthly_analysis import MonthlyAnalysis
 
 
 
@@ -64,3 +65,7 @@ class ExpenseTracker:
     # Show pie chart expenses per categories
     def show_expense_chart(self):
         Chart.generate_pie_chart(self.transactions)
+
+    # Show and analyze monthly expenses
+    def analyze_monthly_expenses(self):
+        MonthlyAnalysis.analyze_monthly_expenses(self.transactions)
