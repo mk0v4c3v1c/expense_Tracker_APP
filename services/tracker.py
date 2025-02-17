@@ -6,6 +6,8 @@ from utils.csv_handler import CSVHandler
 from utils.chart import Chart
 from utils.monthly_analysis import MonthlyAnalysis
 from utils.daily_analysis import DailyAnalysis
+from utils.category_analysis import CategoryAnalysis
+
 
 
 
@@ -75,3 +77,7 @@ class ExpenseTracker:
     # Calculate and show average daily expense
     def calculate_average_daily_expense(self):
         DailyAnalysis.calculate_average_daily_expense(self.transactions)
+
+    # Analyze expenses by category
+    def analyze_expense_by_category(self):
+        CategoryAnalysis.analyze_expense_by_category(self.transactions)
