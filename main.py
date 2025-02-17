@@ -4,7 +4,7 @@ def main():
     tracker = ExpenseTracker()
 
     while True:
-        print("\n1. Add transaction\n2. Show transactions\n3. Show bilance\n4. Delete transaction\n5. Filtering transactions\n6. Export into CSV\n7. Show statistics\n8. Analyze monthly expenses\n9. Calculate daily expenses\n10. Exit")
+        print("\n1. Add transaction\n2. Show transactions\n3. Show bilance\n4. Delete transaction\n5. Filtering transactions\n6. Export into CSV\n7. Show statistics\n8. Analyze monthly expenses\n9. Calculate daily expenses\n10 Analysis per categories\n11. Visualized expenses\n12. Exit")
         choice = input("Choose an option: ")
 
         if choice == "1":
@@ -33,6 +33,8 @@ def main():
             tracker.analyze_monthly_expenses()
         if choice == "9":
             tracker.calculate_average_daily_expense()
+        if choice == "10":
+            tracker.analyze_expense_by_category()
             break
         else:
             print("Unknown choice!")
