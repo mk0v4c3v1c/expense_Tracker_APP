@@ -7,6 +7,8 @@ from utils.chart import Chart
 from utils.monthly_analysis import MonthlyAnalysis
 from utils.daily_analysis import DailyAnalysis
 from utils.category_analysis import CategoryAnalysis
+from utils.visualization import ExpenseVisualization
+
 
 
 
@@ -81,3 +83,7 @@ class ExpenseTracker:
     # Analyze expenses by category
     def analyze_expense_by_category(self):
         CategoryAnalysis.analyze_expense_by_category(self.transactions)
+
+    #Show monthly expense graphs
+    def plot_monthly_expenses(self):
+        ExpenseVisualization.plot_monthly_expenses(self.transactions)
