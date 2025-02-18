@@ -35,6 +35,8 @@ def main():
             tracker.calculate_average_daily_expense()
         if choice == "10":
             tracker.analyze_expense_by_category()
+        if choice == "11":
+            tracker.plot_monthly_expenses()
             break
         else:
             print("Unknown choice!")
