@@ -4,7 +4,7 @@ def main():
     tracker = ExpenseTracker()
 
     while True:
-        print("\n1. Add transaction\n2. Show transactions\n3. Show bilance\n4. Delete transaction\n5. Filtering transactions\n6. Export into CSV\n7. Show statistics\n8. Analyze monthly expenses\n9. Calculate daily expenses\n10 Analysis per categories\n11. Visualized expenses\n12. Exit")
+        print("\n1. Add transaction\n2. Show transactions\n3. Show bilance\n4. Delete transaction\n5. Filtering transactions\n6. Export into CSV\n7. Show statistics\n8. Analyze monthly expenses\n9. Calculate daily expenses\n10 Analysis per categories\n11. Visualized expenses\n12. Set budget\n13. Check budget\14. Exit")
         choice = input("Choose an option: ")
 
         if choice == "1":
@@ -37,6 +37,13 @@ def main():
             tracker.analyze_expense_by_category()
         if choice == "11":
             tracker.plot_monthly_expenses()
+        if choice == "12":
+            month = input("Enter month: (YYYY-MM): ")
+            amount = float(input("Enter budget: "))
+            tracker.set_budget(month, amount)
+
+        elif choice == "13":
+            tracker.check_budget()
             break
         else:
             print("Unknown choice!")
