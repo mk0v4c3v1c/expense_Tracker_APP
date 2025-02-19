@@ -8,6 +8,7 @@ from utils.monthly_analysis import MonthlyAnalysis
 from utils.daily_analysis import DailyAnalysis
 from utils.category_analysis import CategoryAnalysis
 from utils.visualization import ExpenseVisualization
+from utils.budget_manager import BudgetManager
 
 
 
@@ -87,3 +88,14 @@ class ExpenseTracker:
     #Show monthly expense graphs
     def plot_monthly_expenses(self):
         ExpenseVisualization.plot_monthly_expenses(self.transactions)
+
+    #Intializing
+    self.budget_manager = BudgetManager()
+
+    #Define monthly budget
+    def set_budget(self, month, amount):
+        self.budget_manager.set_budget(month, amount)
+
+    #Check is there limit overload
+    def check_budget(self):
+        self.budget_manager.check_budget(self.transactions)
