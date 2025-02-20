@@ -41,7 +41,6 @@ def main():
             month = input("Enter month: (YYYY-MM): ")
             amount = float(input("Enter budget: "))
             tracker.set_budget(month, amount)
-
         elif choice == "13":
             tracker.check_budget()
             break
