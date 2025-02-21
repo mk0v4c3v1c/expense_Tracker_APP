@@ -12,15 +12,12 @@ from utils.budget_manager import BudgetManager
 from utils.prediction import ExpensePrediction
 
 
-
-
-
-
-
 class ExpenseTracker:
     def __init__(self):
         self.transactions = DataHandler.load_transactions()
-    #Delete transaction per index
+        self.budget_manager = BudgetManager()  # Inicijalizacija BudgetManager-a ovde
+
+    # Delete transaction per index
     def delete_transaction(self, index: int):
         if 0 <= index < len(self.transactions):
             deleted_transaction = self.transactions.pop(index)
@@ -28,16 +25,18 @@ class ExpenseTracker:
             print(f"Transaction deleted: {deleted_transaction.to_dict()}")
         else:
             print("Invalid transaction index. Please try again.")
-    #Add new transaction if it's valid
+
+    # Add new transaction if it's valid
     def add_transaction(self, amount: float, category: str, description: str = ""):
         if not Category.is_valid(category):
             raise ValueError("Not a valid category!")
-        #Transactions per description
+        # Transactions per description
         transaction = Transaction(amount, category, description=description)
         self.transactions.append(transaction)
         DataHandler.save_transactions(self.transactions)
         print(f"Added Transaction: {transaction.to_dict()}")
-    #List transactions
+
+    # List transactions
     def list_transactions(self):
         if not self.transactions:
             print(" No transactions recorded yet.")
@@ -50,7 +49,7 @@ class ExpenseTracker:
     def calculate_balance(self):
         return sum(t.amount for t in self.transactions)
 
-    #Filter transaction per category or date
+    # Filter transaction per category or date
     def filter_transactions(self, category: str = None, date: str = None):
         filtered = self.transactions
 
@@ -65,7 +64,7 @@ class ExpenseTracker:
             return
 
         for t in filtered:
-            print(f"{t.date} | {t.category} | {t.amount} RSD | {t.description}")
+            print(f"{t.date} | {t.category} | {t.amount} EUR | {t.description}")
 
     # Export transaction into CSV file
     def export_transactions(self, filename="transactions.csv"):
@@ -87,21 +86,18 @@ class ExpenseTracker:
     def analyze_expense_by_category(self):
         CategoryAnalysis.analyze_expense_by_category(self.transactions)
 
-    #Show monthly expense graphs
+    # Show monthly expense graphs
     def plot_monthly_expenses(self):
         ExpenseVisualization.plot_monthly_expenses(self.transactions)
 
-    #Intializing
-    self.budget_manager = BudgetManager()
-
-    #Define monthly budget
+    # Define monthly budget
     def set_budget(self, month, amount):
         self.budget_manager.set_budget(month, amount)
 
-    #Check is there limit overload
+    # Check is there limit overload
     def check_budget(self):
         self.budget_manager.check_budget(self.transactions)
 
-    #Predict expenses for next month.
+    # Predict expenses for next month.
     def predict_next_month_expense(self):
         ExpensePrediction.predict_next_month_expense(self.transactions)
