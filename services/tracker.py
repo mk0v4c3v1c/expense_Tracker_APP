@@ -9,6 +9,8 @@ from utils.daily_analysis import DailyAnalysis
 from utils.category_analysis import CategoryAnalysis
 from utils.visualization import ExpenseVisualization
 from utils.budget_manager import BudgetManager
+from utils.prediction import ExpensePrediction
+
 
 
 
@@ -99,3 +101,7 @@ class ExpenseTracker:
     #Check is there limit overload
     def check_budget(self):
         self.budget_manager.check_budget(self.transactions)
+
+    #Predict expenses for next month.
+    def predict_next_month_expense(self):
+        ExpensePrediction.predict_next_month_expense(self.transactions)
