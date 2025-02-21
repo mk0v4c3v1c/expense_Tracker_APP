@@ -43,9 +43,11 @@ def main():
             tracker.set_budget(month, amount)
         elif choice == "13":
             tracker.check_budget()
-            break
         if choice == "14":
             tracker.predict_next_month_expense()
+        elif choice == "15":
+            print("Exit. ")
+            break
         else:
             print("Unknown choice!")
 
