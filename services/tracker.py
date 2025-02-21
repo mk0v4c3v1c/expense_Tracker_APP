@@ -15,7 +15,7 @@ from utils.prediction import ExpensePrediction
 class ExpenseTracker:
     def __init__(self):
         self.transactions = DataHandler.load_transactions()
-        self.budget_manager = BudgetManager()  # Inicijalizacija BudgetManager-a ovde
+        self.budget_manager = BudgetManager()  # Initialize BudgetManger
 
     # Delete transaction per index
     def delete_transaction(self, index: int):
@@ -44,7 +44,7 @@ class ExpenseTracker:
 
         print("\n Transaction List:")
         for t in self.transactions:
-            print(f"{t.date} | {t.category} | {t.amount} RSD | {t.description}")
+            print(f"{t.date} | {t.category} | {t.amount} EUR | {t.description}")
 
     def calculate_balance(self):
         return sum(t.amount for t in self.transactions)
